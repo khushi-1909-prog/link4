@@ -139,6 +139,42 @@
   color: #555;
   line-height: 1.4;
 }
+ @keyframes popUp {
+      0% {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* Confetti */
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      top: -10px;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+.services-row.single {
+  justify-content: center;
+}
+
+.center-card {
+  max-width: 320px;
+  text-align: center;
+}
+
 
   </style>
 </head>
@@ -152,38 +188,55 @@
     <p>Estimated delivery by <strong>April 15, 2025</strong></p>
     <p>Thank you for shopping with us.</p>
 
- <section class="services-box">
-  <h3>✨ Newly Added Services</h3>
+ <section class="promo-box services-box">
+  <h3>🚀 Newly Added Services</h3>
 
-  <div class="services-row">
-    <!-- REWARDS (ACTIVE) -->
-    <div class="service-card active">
-      <span class="service-badge">NEW</span>
-      <h4>🎁 Rewards Program</h4>
-      <p>
-        Earn reward points after every successful purchase and redeem them
-        for discounts or new products.
-      </p>
-    </div>
-
-    <!-- VIDEO (SECONDARY) -->
-    <div class="service-card">
-      <span class="service-badge new">NEW</span>
-      <h4>🎥 Video Shopping</h4>
-      <p>
-        Watch short product videos to understand features, usage, and styles
+ <div class="services-row single">
+  <div class="service-card active center-card">
+    <span class="service-badge exploring">NEW</span>
+    <h4>🎥 Video Shopping</h4>
+    <p>
+       Watch short product videos to understand features, usage, and styles
         before buying.
-      </p>
-    </div>
+    </p>
   </div>
+</div>
 
-  <a href="rewards.html" class="btn">Continue</a>
+  <a href="video.html" class="btn">Continue</a>
 </section>
 
 
    
   </main>
+   <script>
+    // Confetti generator
+    function createConfetti() {
+      const confetti = document.createElement("div");
+      confetti.classList.add("confetti");
+      document.body.appendChild(confetti);
+
+      // Random colors
+      const colors = ["#ff4081", "#ff9800", "#4caf50", "#2196f3", "#9c27b0", "#ffc107"];
+      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+      // Random position and size
+      confetti.style.left = Math.random() * window.innerWidth + "px";
+      confetti.style.width = confetti.style.height = Math.random() * 8 + 5 + "px";
+
+      // Random animation duration
+      confetti.style.animationDuration = Math.random() * 3 + 2 + "s";
+
+      // Remove after animation
+      setTimeout(() => {
+        confetti.remove();
+      }, 5000);
+    }
+
+    // Drop confetti every 200ms
+    setInterval(createConfetti, 200);
+  </script>
 </body>
 </html>
+
 
 
