@@ -1,71 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Better Buy • Videos</title>
-  <link rel="stylesheet" href="styles.css" />
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f7f7f7;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      text-align: center;
-      background: royalblue;
-      color: white;
-      padding: 15px;
-      font-size: 22px;
-      font-weight: bold;
-    }
-    .video-container {
-      display: flex;
-      flex-direction: column;-------
-      align-items: center;
-      gap: 30px;
-      padding: 30px;
-    }
-    video {
-      width: 80%;
-      max-width: 700px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-    .back-btn {
-      display: inline-block;
-      margin: 20px;
-      text-decoration: none;
-      color: white;
-      background: royalblue;
-      padding: 10px 15px;
-      border-radius: 8px;
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Product + Video — Stacked Cards</title>
+
+<style>
+  :root {
+    --card-w:420px;
+    --bg:#000;
+    --panel:#0b0b0b;
+    --muted:#9aa4b2;
+    --accent:#ff0055;
+  }
+
+  body {
+    margin:0;
+    background:var(--bg);
+    font-family:Arial, sans-serif;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:20px;
+  }
+
+  .card {
+    width:100%;
+    max-width:var(--card-w);
+    background:var(--panel);
+    border-radius:12px;
+    overflow:hidden;
+    margin-bottom:30px;   /* ensures videos do NOT mix */
+    box-shadow:0 10px 30px rgba(0,0,0,0.6);
+  }
+
+  .video-wrap {
+    width:100%;
+    aspect-ratio:9/16;
+    background:#000;
+  }
+
+  video {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
+  .product {
+    display:flex;
+    gap:12px;
+    padding:14px;
+  }
+
+  .product-thumb {
+    width:120px;
+    height:90px;
+    overflow:hidden;
+    border-radius:8px;
+    background:#111;
+  }
+
+  .product-thumb img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+
+  .meta h3 {
+    margin:0 0 6px 0;
+    font-size:16px;
+  }
+
+  .price-row {
+    font-size:14px;
+    display:flex;
+    gap:8px;
+    align-items:center;
+  }
+
+  .old { text-decoration:line-through; color:#888; }
+  .discount { color:#4cd964; font-weight:bold; }
+
+.shop-btn {
+  background: var(--accent);
+  padding: 2px 8px;        /* 🔥 minimum height */
+  border: none;
+  border-radius: 5px;      /* small rectangular corners */
+  color: #fff;
+  font-size: 11px;         /* very compact text */
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: auto;
+  line-height: 1;          /* 🔑 removes extra height */
+  white-space: nowrap;
+}
+
+.shop-btn:hover {
+  opacity: 0.9;
+}
+.end-actions {
+  width: 100%;
+  max-width: var(--card-w);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.end-btn {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.back-btn {
+  background: #333;
+  color: #fff;
+}
+
+.continue-btn {
+  background: var(--accent);
+  color: #fff;
+}
+
+.end-btn:hover {
+  opacity: 0.9;
+}
+
+
+
+</style>
 </head>
 <body>
 
-  <header>🎥 Better Buy – Styling Videos</header>
-
-  <a href="index.html" class="back-btn">⬅ Back to Home</a>
-
-  <div class="video-container">
-    <video controls>
-      <source src="videos/video1.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-
-    <video controls>
-      <source src="videos/video2.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-
-    <video controls>
-      <source src="videos/video3.mp4" type="video/mp4">
-      Your browser does not support the video tag.
+<!-- CARD 1 -->
+<div class="card">
+  <div class="video-wrap">
+    <video playsinline controls preload="metadata">
+      <source src="v/video3.mp4" type="video/mp4">
     </video>
   </div>
 
+  <div class="product">
+    <div class="product-thumb">
+      <img src="images/new26.jpeg" alt="Lavendar Sandals">
+    </div>
+
+    <div class="meta">
+      <h3>Lavendar Sandals</h3>
+      <div class="price-row">
+        <div>₹540</div>
+        <div class="old">₹600</div>
+        <div class="discount">10% OFF</div>
+      </div>
+    </div>
+
+    <button class="shop-btn" onclick="location.href='clothing_lavendarsandals.html'">
+      Shop Now
+    </button>
+  </div>
+</div>
+
+<!-- CARD 2 -->
+<div class="card">
+  <div class="video-wrap">
+    <video playsinline controls preload="metadata">
+      <source src="v/VID_20251101010158.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="product">
+    <div class="product-thumb">
+      <img src="images/new21.jpg" alt="Grey Velocity Shoes">
+    </div>
+
+    <div class="meta">
+      <h3>Grey Velocity Shoes</h3>
+      <div class="price-row">
+        <div>₹900</div>
+        <div class="old">₹1000</div>
+        <div class="discount">10% OFF</div>
+      </div>
+    </div>
+
+    <button class="shop-btn" onclick="location.href='clothing_velocity.html'">
+      Shop Now
+    </button>
+  </div>
+</div>
+
+<!-- CARD 3 -->
+<div class="card">
+  <div class="video-wrap">
+    <video playsinline controls preload="metadata">
+      <source src="v/video1.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="product">
+    <div class="product-thumb">
+      <img src="images/new20.jpeg" alt="Beach Mates">
+    </div>
+
+    <div class="meta">
+      <h3>Beach Mates</h3>
+      <div class="price-row">
+        <div>₹720</div>
+        <div class="old">₹800</div>
+        <div class="discount">10% OFF</div>
+      </div>
+    </div>
+
+    <button class="shop-btn" onclick="location.href='clothing_beach.html'">
+      Shop Now
+    </button>
+  </div>
+</div>
+
+<!-- CARD 4 -->
+<div class="card">
+  <div class="video-wrap">
+    <video playsinline controls preload="metadata">
+      <source src="v/video2.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="product">
+    <div class="product-thumb">
+      <img src="images/new7.jpg" alt="Sports Shoes">
+    </div>
+
+    <div class="meta">
+      <h3>Sports Shoes</h3>
+      <div class="price-row">
+        <div>₹1,349</div>
+        <div class="old">₹1,499</div>
+        <div class="discount">10% OFF</div>
+      </div>
+    </div>
+
+    <button class="shop-btn" onclick="location.href='clothing_hoodie.html'">
+      Shop Now
+    </button>
+  </div>
+</div>
+
+<!-- END BUTTONS -->
+<div class="end-actions" id="endSection">
+  <button class="end-btn back-btn" onclick="location.href='success2.html'">
+    ⬅ Back
+  </button>
+
+  <button class="end-btn continue-btn" onclick="location.href='https://forms.gle/YOUR_GOOGLE_FORM_LINK'">
+    Continue ➡
+  </button>
+</div>
+<script>
+  let scrollTimeout;
+  let reachedEnd = false;
+
+  window.addEventListener("scroll", () => {
+    clearTimeout(scrollTimeout);
+
+    // Detect scroll stop
+    scrollTimeout = setTimeout(() => {
+      if (!reachedEnd) {
+        alert("Please scroll to the end");
+      }
+    }, 1200);
+
+    // Detect end of page
+    const scrollPosition = window.innerHeight + window.scrollY;
+    const pageHeight = document.body.offsetHeight;
+
+    if (scrollPosition >= pageHeight - 10 && !reachedEnd) {
+      reachedEnd = true;
+      alert("You have reached the end. Click on Continue");
+    }
+  });
+</script>
+
+
+
 </body>
+
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
