@@ -142,7 +142,7 @@
 <!-- CARD 1 -->
 <div class="card">
   <div class="video-wrap">
-    <video playsinline controls preload="metadata">
+    <video class="auto-video" muted playsinline loop preload="auto">
       <source src="v/video3.mp4" type="video/mp4">
     </video>
   </div>
@@ -168,7 +168,7 @@
 <!-- CARD 2 -->
 <div class="card">
   <div class="video-wrap">
-    <video playsinline controls preload="metadata">
+    <video class="auto-video" muted playsinline loop preload="auto">
       <source src="v/VID_20251101010158.mp4" type="video/mp4">
     </video>
   </div>
@@ -194,7 +194,7 @@
 <!-- CARD 3 -->
 <div class="card">
   <div class="video-wrap">
-    <video playsinline controls preload="metadata">
+    <video class="auto-video" muted playsinline loop preload="auto">
       <source src="v/video1.mp4" type="video/mp4">
     </video>
   </div>
@@ -220,7 +220,7 @@
 <!-- CARD 4 -->
 <div class="card">
   <div class="video-wrap">
-    <video playsinline controls preload="metadata">
+    <video class="auto-video" muted playsinline loop preload="auto">
       <source src="v/video2.mp4" type="video/mp4">
     </video>
   </div>
@@ -276,6 +276,34 @@
       alert("You have reached the end. Click on Continue");
     }
   });
+ 
+  const videos = document.querySelectorAll(".auto-video");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        const video = entry.target;
+
+        if (entry.isIntersecting) {
+          // Pause all other videos
+          videos.forEach(v => {
+            if (v !== video) v.pause();
+          });
+
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      });
+    },
+    {
+      threshold: 0.65   // 65% visible = play
+    }
+  );
+
+  videos.forEach(video => observer.observe(video));
+
+
 </script>
 
 
@@ -283,6 +311,7 @@
 </body>
 
 </html>
+
 
 
 
